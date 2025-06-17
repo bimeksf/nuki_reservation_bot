@@ -1,0 +1,6 @@
+requests
+python-dotenv
+pytz
+python-dateutil
+resend
+twilio
