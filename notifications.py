@@ -12,11 +12,11 @@ def format_datetime(dt_str):
 
 
 
-# === RE-SEND (E-MAIL) ===
+#  RE-SEND  
 resend.api_key = os.getenv("RESEND_API_KEY")
 FROM_EMAIL = os.getenv("RESEND_FROM_EMAIL", "PIN Systém <noreply@yourdomain.cz>")
 
-# === TWILIO (SMS) ===
+# TWILIO 
 TWILIO_SID = os.getenv("TWILIO_ACCOUNT_SID")
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
 TWILIO_FROM = os.getenv("TWILIO_FROM_NUMBER")

@@ -16,8 +16,8 @@ def get_reservations():
     #     print(f"Chyba při načítání rezervací: {e}")
     #     return []
     
-    print("🧪 Mock: načítám rezervace")
-    # Simulované rezervace jako seznam slovníků, tak jak by je API vrátilo
+    print(" Mock: načítám rezervace")
+    # mock data
     return [
         {
             "id": "23",

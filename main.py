@@ -9,7 +9,7 @@ from utils import generate_pin
 
 TIMEZONE = "Europe/Prague"
 
-# Kolik hodin před začátkem rezervace chceme PIN poslat (nastavitelné)
+# kdy poslat pin (ted 2 hodiny pred)
 HOURS_BEFORE_SEND = 2
 
 def process_reservations():
@@ -28,14 +28,15 @@ def process_reservations():
             print("Rezervace bez ID, přeskočeno")
             continue  
 
-        # Převod stringu startu na datetime s časovou zónou
+        # Převod  startu na datetime s časovou zónou
         
         start = parser.isoparse(start_str).astimezone(tz)
 
-        # Pokud už PIN existuje, přeskočíme
+        #je pin tak jdu dal 
         if pin_exists(reservation_id):
+            #byl odeslany pin ? jiank pošlu znova
             if was_pin_sent(reservation_id):
-                print(f"🔒 PIN pro rezervaci {reservation_id} už byl odeslán, přeskočeno")
+                print(f"PIN pro rezervaci {reservation_id} už byl odeslán, přeskočeno")
                 continue
             else:
                 print(f"PIN existuje, ale ještě nebyl odeslán, pokusím se odeslat")
@@ -54,12 +55,12 @@ def process_reservations():
         # Vypočítáme rozdíl mezi startem rezervace a teď
         delta_seconds = (start - now).total_seconds()
 
-        # Pokud je rezervace víc než HOURS_BEFORE_SEND hodin daleko, PIN neposílat
+        # Kontorla na to jestli je 2 hodiny pred rezervaci jinak neposla pin 
         if delta_seconds > HOURS_BEFORE_SEND * 3600:
-            print(f"⏳ Rezervace {reservation_id} je víc než {HOURS_BEFORE_SEND} hodin daleko, PIN zatím neposílám")
+            print(f"Rezervace {reservation_id} je víc než {HOURS_BEFORE_SEND} hodin daleko, PIN zatím neposílám")
             continue
 
-        # Nastavíme validitu PINu od začátku rezervace na 1 hodinu (lze upravit dle potřeby)
+        # validita pinu ted 75 min
         valid_from = start.isoformat()
         valid_to = (start + timedelta(minutes=75)).isoformat()
 

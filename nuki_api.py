@@ -27,5 +27,5 @@ def add_pin_to_nuki(pin_code, name="Reservation PIN", valid_from=None, valid_to=
     # except requests.RequestException as e:
     #     print(f"Chyba při přidávání PINu do Nuki: {e}")
     #     return False
-    print(f"🧪 Mock: přidávám PIN {pin_code} do Nuki zámku platný od {valid_from} do {valid_to}")
+    print(f"Mock: přidávám PIN {pin_code} do Nuki zámku platný od {valid_from} do {valid_to}")
     return True
